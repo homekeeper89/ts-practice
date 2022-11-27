@@ -4,9 +4,11 @@ import {
 } from '@app/algorithm/hacker-rank';
 
 describe('calc bill division', () => {
-  it('should return expected', () => {
-    const expected = 2;
-    const res = calcBillDivision();
+  it.each([
+    [[3, 10, 2, 9], 1, 12, 5],
+    [[3, 10, 2, 9], 1, 7, 'Bon Appetit'],
+  ])('should return expected', (foods, index, bill, expected) => {
+    const res = calcBillDivision(foods, index, bill);
     expect(res).toEqual(expected);
   });
 });

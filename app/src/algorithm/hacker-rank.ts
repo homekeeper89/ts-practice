@@ -1,6 +1,15 @@
+type calcReturnString = 'Bon Appetit';
 /** @link https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true */
-export function calcBillDivision() {
-  return 3;
+export function calcBillDivision(
+  foodIds: number[],
+  notEatFoodIndex: number,
+  totalBill: number
+): number | calcReturnString {
+  const validFoods = foodIds.filter((val, index) => index != notEatFoodIndex);
+  const total = validFoods.reduce((pre, val) => pre + val, 0);
+  const eachCost = total / 2;
+  const res = totalBill - eachCost;
+  return res == 0 ? 'Bon Appetit' : res;
 }
 
 /**
