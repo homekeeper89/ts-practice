@@ -34,7 +34,8 @@
     ],
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "^@app/algorithm(|/.*)$": "<rootDir>/app/src/algorithm/$1"
+      "^@app/algorithm(|/.*)$": "<rootDir>/app/src/algorithm/$1",
+      "^@app/(.*)$": "<rootDir>/app/$1"
     }
   },
   "author": "",
