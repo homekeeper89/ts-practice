@@ -1,3 +1,8 @@
+/** @link https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true */
+export function calcBillDivision() {
+  return 3;
+}
+
 /**
  * @link https://www.hackerrank.com/challenges/diagonal-difference/problem?isFullScreen=true
  */
