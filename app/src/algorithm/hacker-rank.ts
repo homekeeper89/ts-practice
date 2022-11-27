@@ -1,3 +1,6 @@
+import { popItemByIndex, sumItems } from '@app/util';
+import { chain } from 'radash';
+
 type calcReturnString = 'Bon Appetit';
 /** @link https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true */
 export function calcBillDivision(
@@ -5,9 +8,8 @@ export function calcBillDivision(
   notEatFoodIndex: number,
   totalBill: number
 ): number | calcReturnString {
-  const validFoods = foodIds.filter((val, index) => index != notEatFoodIndex);
-  const total = validFoods.reduce((pre, val) => pre + val, 0);
-  const eachCost = total / 2;
+  const calcTargetItemsTotalBill = chain(popItemByIndex, sumItems);
+  const eachCost = calcTargetItemsTotalBill(foodIds, notEatFoodIndex) / 2;
   const res = totalBill - eachCost;
   return res == 0 ? 'Bon Appetit' : res;
 }
