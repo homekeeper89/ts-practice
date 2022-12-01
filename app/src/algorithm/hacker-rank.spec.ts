@@ -1,6 +1,19 @@
-import { diagonalDifference } from "@app/algorithm/hacker-rank";
+import {
+  calcBillDivision,
+  diagonalDifference,
+} from '@app/algorithm/hacker-rank';
 
-describe("diagonal difference", () => {
+describe('calc bill division', () => {
+  it.each([
+    [[3, 10, 2, 9], 1, 12, 5],
+    [[3, 10, 2, 9], 1, 7, 'Bon Appetit'],
+  ])('should return expected', (foods, index, bill, expected) => {
+    const res = calcBillDivision(foods, index, bill);
+    expect(res).toEqual(expected);
+  });
+});
+
+describe('diagonal difference', () => {
   it.each([
     [
       [
@@ -18,7 +31,7 @@ describe("diagonal difference", () => {
       ],
       15,
     ],
-  ])("should return expected", (data, expectValue) => {
+  ])('should return expected', (data, expectValue) => {
     const res = diagonalDifference(data);
     expect(res).toEqual(expectValue);
   });
