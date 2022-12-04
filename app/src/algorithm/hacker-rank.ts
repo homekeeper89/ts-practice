@@ -1,5 +1,21 @@
-import { popItemByIndex, sumItems } from '@app/util';
+import { applyUnique, popItemByIndex, sumItems } from '@app/util';
 import { chain } from 'radash';
+
+/** @link https://www.hackerrank.com/challenges/sock-merchant/problem?isFullScreen=true */
+export function calcSockMerchant(_totalCount: number, items: number[]) {
+  const uniqueItems = applyUnique(items);
+  const counts: number[] = [];
+
+  uniqueItems.forEach((uniqueItem) => {
+    const duplicatedItem = items.filter((item) => uniqueItem == item);
+    counts.push(duplicatedItem.length);
+  });
+
+  let remains = counts.filter((value) => value >= 2);
+  remains = remains.map((value) => parseInt(`${value / 2}`));
+
+  return remains.reduce((pre, value) => pre + value, 0);
+}
 
 type calcReturnString = 'Bon Appetit';
 /** @link https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true */
