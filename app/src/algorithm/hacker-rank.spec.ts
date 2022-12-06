@@ -1,5 +1,6 @@
 import {
   calcBillDivision,
+  calcBillDivisionByFP,
   calcSockMerchant,
   calcSockMerchantByFp,
   diagonalDifference,
@@ -25,6 +26,9 @@ describe('calc bill division', () => {
   ])('should return expected', (foods, index, bill, expected) => {
     const res = calcBillDivision(foods, index, bill);
     expect(res).toEqual(expected);
+
+    const resFp = calcBillDivisionByFP(foods, index, bill);
+    expect(res).toEqual(resFp);
   });
 });
 

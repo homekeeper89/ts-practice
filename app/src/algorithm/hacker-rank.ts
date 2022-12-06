@@ -1,5 +1,5 @@
 import { filterUniqueItems, popItemByIndex, sumItems } from '@app/util';
-import { A, pipe } from '@mobily/ts-belt';
+import { A, N, pipe } from '@mobily/ts-belt';
 import { chain } from 'radash';
 
 /** @link https://www.hackerrank.com/challenges/sock-merchant/problem?isFullScreen=true */
@@ -38,6 +38,23 @@ export function calcSockMerchant(_totalCount: number, items: number[]) {
 }
 
 type calcReturnString = 'Bon Appetit';
+
+/** @link https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true */
+export function calcBillDivisionByFP(
+  foodIds: readonly number[],
+  notEatFoodIndex: number,
+  totalBill: number
+): number | calcReturnString {
+  const eachCost = pipe(
+    foodIds,
+    A.filterWithIndex((index, _value) => index != notEatFoodIndex),
+    A.reduce(0, (pre, value) => pre + value),
+    N.divide(2)
+  );
+  const res = totalBill - eachCost;
+
+  return res == 0 ? 'Bon Appetit' : res;
+}
 /** @link https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true */
 export function calcBillDivision(
   foodIds: number[],
@@ -47,6 +64,7 @@ export function calcBillDivision(
   const calcTargetItemsTotalBill = chain(popItemByIndex, sumItems);
   const eachCost = calcTargetItemsTotalBill(foodIds, notEatFoodIndex) / 2;
   const res = totalBill - eachCost;
+
   return res == 0 ? 'Bon Appetit' : res;
 }
 
