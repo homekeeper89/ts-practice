@@ -1,6 +1,7 @@
 import {
   calcBillDivision,
   calcSockMerchant,
+  calcSockMerchantByFp,
   diagonalDifference,
 } from '@app/algorithm/hacker-rank';
 
@@ -11,6 +12,9 @@ describe('sock merchant', () => {
   ])('should return expected', async (totalCount, items, expected) => {
     const res = calcSockMerchant(totalCount, items);
     expect(res).toEqual(expected);
+
+    const fpRes = calcSockMerchantByFp(totalCount, items);
+    expect(res).toEqual(fpRes);
   });
 });
 

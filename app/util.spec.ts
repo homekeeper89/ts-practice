@@ -1,4 +1,4 @@
-import { applyUnique, popItemByIndex, sumItems } from './util';
+import { filterUniqueItems, popItemByIndex, sumItems } from './util';
 
 describe('utils', () => {
   it.each([
@@ -11,7 +11,7 @@ describe('utils', () => {
       ['a', 1],
     ],
   ])('apply unique should return expected', (item, expected) => {
-    const res = applyUnique(item);
+    const res = filterUniqueItems(item);
     expect(res).toEqual(expected);
   });
 

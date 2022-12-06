@@ -1,9 +1,29 @@
-import { applyUnique, popItemByIndex, sumItems } from '@app/util';
+import { filterUniqueItems, popItemByIndex, sumItems } from '@app/util';
+import { A, pipe } from '@mobily/ts-belt';
 import { chain } from 'radash';
 
 /** @link https://www.hackerrank.com/challenges/sock-merchant/problem?isFullScreen=true */
+export function calcSockMerchantByFp(_totalCount: number, items: number[]) {
+  const res = pipe(
+    A.uniq(items),
+    A.map((data) => {
+      const obj: { key: number; itemCounts: number } = {
+        key: data,
+        itemCounts: 0,
+      };
+      obj.itemCounts = items.filter((item) => data == item).length;
+      return obj;
+    }),
+    A.filter((data) => data.itemCounts >= 2),
+    A.map((data) => parseInt(`${data.itemCounts / 2}`)),
+    A.reduce(0, (pre, cur) => pre + cur)
+  );
+  return res;
+}
+
+/** @link https://www.hackerrank.com/challenges/sock-merchant/problem?isFullScreen=true */
 export function calcSockMerchant(_totalCount: number, items: number[]) {
-  const uniqueItems = applyUnique(items);
+  const uniqueItems = filterUniqueItems(items);
   const counts: number[] = [];
 
   uniqueItems.forEach((uniqueItem) => {
@@ -35,7 +55,7 @@ export function calcBillDivision(
  */
 export function diagonalDifference(arr: number[][]): number {
   const getNumberByIndex = (index: number, array: number[]): number => {
-    return array[index];
+    return array[index] as number;
   };
 
   let left = 0;
