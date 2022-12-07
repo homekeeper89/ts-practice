@@ -1,7 +1,23 @@
 import {
   calcBillDivision,
+  calcBillDivisionByFP,
+  calcSockMerchant,
+  calcSockMerchantByFp,
   diagonalDifference,
 } from '@app/algorithm/hacker-rank';
+
+describe('sock merchant', () => {
+  it.each([
+    [9, [10, 20, 20, 10, 10, 30, 50, 10, 20], 3],
+    [7, [1, 2, 1, 2, 1, 3, 2], 2],
+  ])('should return expected', async (totalCount, items, expected) => {
+    const res = calcSockMerchant(totalCount, items);
+    expect(res).toEqual(expected);
+
+    const fpRes = calcSockMerchantByFp(totalCount, items);
+    expect(res).toEqual(fpRes);
+  });
+});
 
 describe('calc bill division', () => {
   it.each([
@@ -10,6 +26,9 @@ describe('calc bill division', () => {
   ])('should return expected', (foods, index, bill, expected) => {
     const res = calcBillDivision(foods, index, bill);
     expect(res).toEqual(expected);
+
+    const resFp = calcBillDivisionByFP(foods, index, bill);
+    expect(res).toEqual(resFp);
   });
 });
 
