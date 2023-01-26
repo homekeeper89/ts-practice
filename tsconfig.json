@@ -24,6 +24,7 @@
     "paths": {
       "@app/algorithm/*": ["app/src/algorithm/*"],
       "@app/*": ["app/*"],
+      "@util/*": ["app/util.ts"]
     },
   }
 }

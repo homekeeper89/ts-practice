@@ -1,4 +1,4 @@
-import { filterUniqueItems, popItemByIndex, sumItems } from './util';
+import { filterUniqueItems, popItemByIndex, sumItems } from '@util/util';
 
 describe('utils', () => {
   it.each([
