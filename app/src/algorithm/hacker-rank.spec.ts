@@ -1,11 +1,21 @@
 import {
   calcBillDivision,
   calcBillDivisionByFP,
+  calcRepeatedString,
   calcSockMerchant,
   calcSockMerchantByFp,
   diagonalDifference,
 } from '@app/algorithm/hacker-rank';
 
+describe('repeated string', () => {
+  it.each([
+    ['aba', 10, 7],
+    ['a', 1000000000000, 1000000000000],
+  ])('should return expected', (givenStr, num, expected) => {
+    const res = calcRepeatedString(givenStr, num);
+    expect(res).toEqual(expected);
+  });
+});
 describe('sock merchant', () => {
   it.each([
     [9, [10, 20, 20, 10, 10, 30, 50, 10, 20], 3],

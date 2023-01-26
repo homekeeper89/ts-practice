@@ -2,6 +2,11 @@ import { filterUniqueItems, popItemByIndex, sumItems } from '@app/util';
 import { A, N, pipe } from '@mobily/ts-belt';
 import { chain } from 'radash';
 
+/** @link https://www.hackerrank.com/challenges/repeated-string/problem */
+export function calcRepeatedString(givenStr: string, num: number) {
+  return '';
+}
+
 /** @link https://www.hackerrank.com/challenges/sock-merchant/problem?isFullScreen=true */
 export function calcSockMerchantByFp(_totalCount: number, items: number[]) {
   const res = pipe(
