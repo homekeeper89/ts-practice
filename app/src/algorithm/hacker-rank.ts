@@ -3,8 +3,15 @@ import { A, N, pipe } from '@mobily/ts-belt';
 import { chain } from 'radash';
 
 /** @link https://www.hackerrank.com/challenges/repeated-string/problem */
-export function calcRepeatedString(givenStr: string, num: number) {
-  return '';
+export function calcRepeatedString(givenStr: string, num: number): number {
+  const length = givenStr.length;
+  const count = parseInt((num / length).toString());
+  const reminder = num % length;
+
+  const countA = givenStr.split('').filter((char) => char == 'a').length;
+  const reminderCount = givenStr[reminder - 1] == 'a' ? 1 : 0;
+
+  return countA * count + reminderCount;
 }
 
 /** @link https://www.hackerrank.com/challenges/sock-merchant/problem?isFullScreen=true */
