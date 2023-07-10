@@ -11,6 +11,10 @@ describe('repeated string', () => {
   it.each([
     ['aba', 10, 7],
     ['a', 1000000000000, 1000000000000],
+    ['ababab', 2, 1],
+    ['bbabab', 2, 0],
+    ['abcabc', 12, 4],
+    ['b', 1, 0],
   ])('should return expected', (givenStr, num, expected) => {
     const res = calcRepeatedString(givenStr, num);
     expect(res).toEqual(expected);

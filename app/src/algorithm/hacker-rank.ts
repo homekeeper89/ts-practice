@@ -4,11 +4,21 @@ import { chain } from 'radash';
 
 /** @link https://www.hackerrank.com/challenges/repeated-string/problem */
 export function calcRepeatedString(givenStr: string, num: number): number {
-  const length = givenStr.length;
-  const count = parseInt((num / length).toString());
-  const reminder = num % length;
+  const countChar = (targetString: string, targetChar: string): number =>
+    targetString.split('').filter((char) => char == targetChar).length;
 
-  const countA = givenStr.split('').filter((char) => char == 'a').length;
+  const strLength = givenStr.length;
+
+  if (strLength >= num) {
+    const targetStr = givenStr.slice(0, num);
+    const countA = countChar(targetStr, 'a');
+    return countA;
+  }
+
+  const count = parseInt((num / strLength).toString());
+  const reminder = num % strLength;
+
+  const countA = countChar(givenStr, 'a');
   const reminderCount = givenStr[reminder - 1] == 'a' ? 1 : 0;
 
   return countA * count + reminderCount;
