@@ -27,7 +27,6 @@
                 "args": "after-used",
                 "argsIgnorePattern": "^_"
             }
-        ],
-        "functional/prefer-readonly-type": "warn"
+        ]
     }
 }
